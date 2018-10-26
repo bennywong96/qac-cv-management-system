@@ -2,6 +2,8 @@ package com.qa.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ICvRepository extends MongoRepository<T, ID> {
+import com.qa.domain.Cv;
+
+public interface ICvRepository extends MongoRepository<Cv, Long> {
 
 }
