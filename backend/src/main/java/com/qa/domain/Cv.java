@@ -24,12 +24,11 @@ public class Cv {
 		this.cvFile = cvFile;
 	}
 
-	public Cv() {}
-
-	public Cv(String name) {
+	public Cv(String name){
 	    this.name = name;
     }
 
+    public Cv() {}
 
     public String getId() {
 		return id;

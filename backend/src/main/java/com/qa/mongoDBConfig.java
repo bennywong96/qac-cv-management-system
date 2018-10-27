@@ -1,6 +1,7 @@
 package com.qa;
 
 import com.qa.domain.Cv;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import com.qa.repository.ICvRepository;
 
+import java.util.Date;
 
 @EnableMongoRepositories(basePackageClasses = ICvRepository.class)
 @Configuration

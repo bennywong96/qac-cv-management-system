@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cvsystem")
+@CrossOrigin(origins = "http://localhost:8080")
 public class CvController {
 	
 	@Autowired
@@ -21,35 +22,31 @@ public class CvController {
 		this.service = service;
 	}
 
-
 	@GetMapping("/get")
     public List<Cv> getAllCv() {
 	    return service.getAllCv();
     }
 
 	@PostMapping("/upload-cv")
-	public ResponseEntity<Object> uploadCv(@RequestParam("file")MultipartFile file){
-		return service.uploadCv(file);
+	public ResponseEntity<Object> uploadCv(@RequestParam("file")MultipartFile file,
+                                           @RequestParam("name") String name){
+		return service.uploadCv(file, name);
 	}
 
-    @GetMapping("/retrieve/{name}")
-    public Cv retrieveFile(@PathVariable String name) {
-	    return service.downloadCv(name);
+    @GetMapping("/retrieve/{id}")
+    public Cv retrieveFile(@PathVariable String id) {
+	    return service.downloadCv(id);
     }
 
-//	@GetMapping("/download-cv/{id}")
-//	@ResponseBody
-//	public Cv downloadCv(@PathVariable String id) {
-//		return service.downloadCv(id);
-//	}
-
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteCv(@PathVariable String id){
 	    return service.deleteCv(id);
     }
 
     @PutMapping("/update-cv/{id}")
-    public ResponseEntity<Object> updateCv(@PathVariable String id, @RequestParam("file") MultipartFile file) {
-        return service.updateCv(id, file);
+    public ResponseEntity<Object> updateCv(@PathVariable String id,
+                                           @RequestParam("file") MultipartFile file,
+                                           @RequestParam("name") String name) {
+        return service.updateCv(id, file, name);
     }
 }
