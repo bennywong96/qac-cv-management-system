@@ -1,30 +1,37 @@
 package com.qa.domain;
 
-import java.io.File;
 import java.util.Date;
 
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document
 public class Cv {
 
 	@Id
-	private Long id;
+	private String id;
+	@Field
 	private String name;
+	@Field
 	private Date lastModified;
-	private String cvFile;
+	@Field
+	private Binary cvFile;
 
-	public Cv(String name, String cvFile) {
+	public Cv(String name, Binary cvFile) {
 		this.name = name;
 		this.cvFile = cvFile;
 	}
 
-	public Cv() {
+	public Cv() {}
 
-	}
-	
-	public Long getId() {
+	public Cv(String name) {
+	    this.name = name;
+    }
+
+
+    public String getId() {
 		return id;
 	}
 	
@@ -43,16 +50,13 @@ public class Cv {
 	public void setLastModified(Date lastModified) {
 		this.lastModified = lastModified;
 	}
-	
-	public String getCvFile() {
-		return cvFile;
-	}
-	
-	public void setCvFile(String cvFile) {
-		this.cvFile = cvFile;
-	}
-	
-	
-	
+
+    public Binary getCvFile() {
+        return cvFile;
+    }
+
+    public void setCvFile(Binary cvFile) {
+        this.cvFile = cvFile;
+    }
 
 }
